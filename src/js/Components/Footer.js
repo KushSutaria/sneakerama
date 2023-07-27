@@ -1,7 +1,7 @@
 import { MailOutlined, PhoneOutlined, FacebookOutlined, TwitterOutlined, InstagramOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-import '../App.css';
+import '../../css/App.css';
 
 function Footer() {
 
@@ -11,7 +11,7 @@ function Footer() {
             <div className='footer-menu-bg'>
                 <div className='footer-menu-section'>
                     <p className='footer-menu-header'>ABOUT SNEAKERAMA</p>
-                    <p className='footer-menu-item'>Reviews</p>
+                    <p className='footer-menu-item' onClick={() => navigate('/reviews')}>Reviews</p>
                     <p className='footer-menu-item'>About Us</p>
                     <p className='footer-menu-item' onClick={() => navigate('/contact')}>Contact Us</p>
                 </div>
