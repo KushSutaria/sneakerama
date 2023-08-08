@@ -35,14 +35,17 @@ function App() {
     const result = await authService.getCurrentUser();
     console.log(result.data);
     if (result.data) {
+      // eslint-disable-next-line
       if (result.data.isAdmin == true) {
         console.log("Admin");
         setIsAdmin(true);
       }
+      // eslint-disable-next-line
       if (result.data.isSeller == true) {
         console.log("Seller");
         setIsSeller(true);
       }
+      // eslint-disable-next-line
       if (result.data.isVerifiedSeller == true) {
         console.log("Verified");
         setIsVerified(true);
@@ -57,6 +60,7 @@ function App() {
   getCurrentUser();
   useEffect(() => {
     getCurrentUser();
+    // eslint-disable-next-line
   }, [user])
 
 
