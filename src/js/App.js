@@ -36,17 +36,17 @@ function App() {
     console.log(result.data);
     if (result.data) {
       // eslint-disable-next-line
-      if (result.data.isAdmin == true) {
+      if (result.data.isAdmin === true) {
         console.log("Admin");
         setIsAdmin(true);
       }
       // eslint-disable-next-line
-      if (result.data.isSeller == true) {
+      if (result.data.isSeller === true) {
         console.log("Seller");
         setIsSeller(true);
       }
       // eslint-disable-next-line
-      if (result.data.isVerifiedSeller == true) {
+      if (result.data.isVerifiedSeller === true) {
         console.log("Verified");
         setIsVerified(true);
       }
@@ -91,7 +91,7 @@ function App() {
             <Route path="/inventory/add-product" element={<AddProduct />} />
             <Route path="/inventory/edit-product" element={<EditProduct />} />
           </>
-        ) : null}
+        ) : <Route path="/" element={<Home />} />}
 
         {user ? (
           <>
