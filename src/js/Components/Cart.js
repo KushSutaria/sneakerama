@@ -19,7 +19,7 @@ function Cart(props) {
                 <div className="cart-item" key={index}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <div className="cart-item-image">
-                            <img src={product.image} alt="Product" className='cart-list-image' />
+                            <img src={product.image[0]} alt="Product" className='cart-list-image' />
                         </div>
                         <div style={{ color: "#959595", marginLeft: '10px' }}>
                             <div className="cart-item-details">
@@ -46,7 +46,8 @@ function Cart(props) {
                                     <span className="quantity-value">{product.quantity}</span>
                                     <span className="quantity-btn"
                                         onClick={async () => {
-                                            tempProducts[index].quantity += 1;
+                                            const stringQuantity = tempProducts[index].quantity;
+                                            tempProducts[index].quantity = parseInt(stringQuantity) + 1;
                                             await setProducts(tempProducts);
                                             localStorage.setItem('cart', JSON.stringify(tempProducts));
                                         }
