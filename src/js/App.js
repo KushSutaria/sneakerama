@@ -22,6 +22,8 @@ import Inventory from './Pages/Inventory';
 import OrderDetails from './Pages/OrderDetails';
 import Catalog from './Pages/product/catalog';
 import IndividualProduct from './Pages/product/individualProduct';
+import AdminHome from './Pages/admin/AdminHome';
+import EditAdminInfo from './Pages/admin/EditAdminInfo';
 import { authService } from '../services/authService';
 import { useEffect, useState } from 'react';
 
@@ -29,26 +31,19 @@ function App() {
   const user = JSON.parse(localStorage.getItem('user'));
   const [isadmin, setIsAdmin] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, ] = useState(false);
 
   const getCurrentUser = async () => {
     const result = await authService.getCurrentUser();
     console.log(result.data);
     if (result.data) {
-      // eslint-disable-next-line
       if (result.data.isAdmin === true) {
         console.log("Admin");
         setIsAdmin(true);
       }
-      // eslint-disable-next-line
       if (result.data.isSeller === true) {
         console.log("Seller");
         setIsSeller(true);
-      }
-      // eslint-disable-next-line
-      if (result.data.isVerifiedSeller === true) {
-        console.log("Verified");
-        setIsVerified(true);
       }
     }
     console.log(isadmin);
@@ -67,12 +62,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      {user && isadmin ? (
+      {isadmin ? (
           <>
-            <Route path="/admin/home" element={<Reviews />} />
+            <Route path="/admin/home" element={<AdminHome />} />
+            <Route path="/admin/edit-information" element={<EditAdminInfo />}/>
           </>
-        ) : <Route path='/faq' element={<FAQ/>}/>}
-
+        ) : null}
+        
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/orders/:id" element={<OrderDetails />} />
@@ -84,7 +80,8 @@ function App() {
         <Route path="/event/:id" element={<MainEvent />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/catalog/:id' element={<IndividualProduct />} />
-
+        <Route path="/eventregistration/:id" element={<EventRegistration />} />
+        <Route path="/postevent" element={<PostEvent />} />
 
         {isSeller && isVerified ? (
           <>
@@ -100,8 +97,6 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/eventregistration/:id" element={<EventRegistration />} />
-            <Route path="/postevent" element={<PostEvent />} />
             <Route path="/editprofile" element={<EditProfile />} />
           </>
         ) : null}
