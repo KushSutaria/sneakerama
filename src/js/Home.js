@@ -19,8 +19,15 @@ import converseRun from '../images/converse-run-star-hike.png'
 import promo1 from '../images/promo1.png'
 import promo2 from '../images/promo2.png'
 import promo3 from '../images/promo3.png'
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+    const navigate = useNavigate();
+    const filterByBrand = (brand) => {
+        console.log(brand);
+        navigate('/catalog', { state:  brand });
+    }
+
     return (
         <div>
             <Header />
@@ -95,9 +102,9 @@ function Home() {
                 </div>
                 <div>
                     <img src={promo2} className='home-promo-img' alt='promo2' />
-                    <p className='home-promo-header'>Get into Fresh Mode: Lacoste</p>
-                    <div className='home-new-arrivals-btn'>
-                        SHOP LACOSTE NEW ARRIVALS
+                    <p className='home-promo-header'>Get into Fresh Mode: NIKE</p>
+                    <div className='home-new-arrivals-btn' onClick={()=>filterByBrand('Nike')}>
+                        SHOP NIKE NEW ARRIVALS
                     </div>
                 </div>
                 <div>

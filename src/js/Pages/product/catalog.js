@@ -4,7 +4,7 @@ import Header from '../../Components/Header';
 import classes from '../../../css/Catalog.module.css';
 import { authService } from '../../../services/authService';
 import { getProducts, getProductById } from '../../../services/catalogService';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Catalog = () => {
@@ -15,6 +15,10 @@ const Catalog = () => {
   // eslint-disable-next-line no-unused-vars
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(6.5);
+// get brand name from state
+  const { state: brand } = useLocation();
+  console.log(brand);
+
   const getUserData = async () => {
     const result = await authService.getCurrentUser();
     return result;
@@ -155,6 +159,28 @@ const Catalog = () => {
     }
     setProducts(kidsProducts);
   };
+
+  const filterByBrand = async (brand) => {
+    //get brandname from params
+    console.log(brand);
+    const productData = await getProducts();
+    console.log(productData.product);
+    let brandProducts = [];
+    for(let i=0;i<productData.product.length;i++){
+      // eslint-disable-next-line
+      if(productData.product[i].brand==brand){
+        console.log(productData.product[i]);
+        brandProducts.push(productData.product[i]);
+      }
+    }
+    setProducts(brandProducts);
+  }
+useEffect(() => {
+    filterByBrand(brand);
+  
+}
+// eslint-disable-next-line
+, [])
 
   return (
     <>

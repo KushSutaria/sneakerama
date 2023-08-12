@@ -67,6 +67,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      {user && isadmin ? (
+          <>
+            <Route path="/admin/home" element={<Reviews />} />
+          </>
+        ) : <Route path='/faq' element={<FAQ/>}/>}
+
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/orders/:id" element={<OrderDetails />} />
@@ -79,11 +85,6 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/catalog/:id' element={<IndividualProduct />} />
 
-        {isadmin ? (
-          <>
-            <Route path="/admin/home" element={<Home />} />
-          </>
-        ) : null}
 
         {isSeller && isVerified ? (
           <>
@@ -93,7 +94,7 @@ function App() {
           </>
         ) : <Route path="/" element={<Home />} />}
 
-        {user ? (
+        {user && !isadmin ? (
           <>
             <Route path="/orders" element={<Orders />} />
             <Route path="/wishlist" element={<Wishlist />} />
