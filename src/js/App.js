@@ -31,7 +31,7 @@ function App() {
   const user = JSON.parse(localStorage.getItem('user'));
   const [isadmin, setIsAdmin] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
-  const [isVerified, ] = useState(false);
+  const [isVerified, setIsVerified ] = useState(false);
 
   const getCurrentUser = async () => {
     const result = await authService.getCurrentUser();
@@ -44,6 +44,10 @@ function App() {
       if (result.data.isSeller === true) {
         console.log("Seller");
         setIsSeller(true);
+      }
+      if (result.data.isVerifiedSeller === true) {
+        console.log("Verified");
+        setIsVerified(true);
       }
     }
     console.log(isadmin);
@@ -62,7 +66,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      {isadmin ? (
+      {user && isadmin ? (
           <>
             <Route path="/admin/home" element={<AdminHome />} />
             <Route path="/admin/edit-information" element={<EditAdminInfo />}/>
