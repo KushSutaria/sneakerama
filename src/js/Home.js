@@ -25,7 +25,10 @@ function Home() {
     const navigate = useNavigate();
     const filterByBrand = (brand) => {
         console.log(brand);
-        navigate('/catalog', { state:  brand });
+        navigate('/catalog', { state: { 'brand': brand } });
+    }
+    const filterByGender = (role) => {
+        navigate('/catalog', { state: { 'role': role } });
     }
 
     return (
@@ -35,7 +38,7 @@ function Home() {
                 <img src={banner} className='home-banner-img' alt='banner' />
                 <div className='home-banner-centered-text'>
                     The Freshest Kicks of Summer
-                    <div className='home-new-arrivals-btn'>
+                    <div className='home-new-arrivals-btn' onClick={() => navigate('/catalog')}>
                         SHOP NEW ARRIVALS
                     </div>
                 </div>
@@ -51,8 +54,8 @@ function Home() {
                 <img src={banner2} className='home-banner-img' alt='banner2' />
                 <div className='home-banner2-centered-text'>
                     Hoops-Inspired Sneakers
-                    <div className='home-banner2-btn'>
-                        SHOP NEW BALANCE COURT CLASSICS
+                    <div className='home-banner2-btn' onClick={() => filterByBrand('Adidas')}>
+                        SHOP NEW ADIDAS CLASSICS
                     </div>
                 </div>
             </div>
@@ -87,7 +90,7 @@ function Home() {
                 <img src={banner3} className='home-banner-img' alt='banner3' />
                 <div className='home-banner2-centered-text'>
                     Forever in Style
-                    <div className='home-banner2-btn'>
+                    <div className='home-banner2-btn' onClick={() => navigate('/catalog')}>
                         SHOP CLASSICS
                     </div>
                 </div>
@@ -96,22 +99,22 @@ function Home() {
                 <div>
                     <img src={promo1} className='home-promo-img' alt='promo1' />
                     <p className='home-promo-header'>Fun is Velcro</p>
-                    <div className='home-new-arrivals-btn'>
-                        SHOP KIDS' LACELESS SNEAKERS
+                    <div className='home-new-arrivals-btn' onClick={() => filterByGender('boys')} >
+                        SHOP KIDS' SNEAKERS
                     </div>
                 </div>
                 <div>
                     <img src={promo2} className='home-promo-img' alt='promo2' />
                     <p className='home-promo-header'>Get into Fresh Mode: NIKE</p>
-                    <div className='home-new-arrivals-btn' onClick={()=>filterByBrand('Nike')}>
+                    <div className='home-new-arrivals-btn' onClick={() => filterByBrand('Nike')}>
                         SHOP NIKE NEW ARRIVALS
                     </div>
                 </div>
                 <div>
                     <img src={promo3} className='home-promo-img' alt='promo3' />
-                    <p className='home-promo-header'>Slide & Sandal Season is Here</p>
-                    <div className='home-new-arrivals-btn'>
-                        SHOP SLIDES & SANDALS
+                    <p className='home-promo-header'>Stay fashionable Women</p>
+                    <div className='home-new-arrivals-btn' onClick={() => filterByGender('women')}>
+                        SHOP Women's SNEAKERS
                     </div>
                 </div>
             </div>
