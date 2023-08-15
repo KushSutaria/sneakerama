@@ -35,7 +35,6 @@ function App() {
 
   const getCurrentUser = async () => {
     const result = await authService.getCurrentUser();
-    console.log(result.data);
     if (result.data) {
       if (result.data.isAdmin === true) {
         console.log("Admin");
