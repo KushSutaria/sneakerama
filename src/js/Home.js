@@ -61,27 +61,27 @@ function Home() {
             </div>
             <p className='home-featured-header'>Featured Sneakers</p>
             <div className='home-featured-div'>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={NikeAir} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>Nike Air Force 1</p>
                 </div>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={jordan} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>Jordan Air Jordan 1 Mid SE</p>
                 </div>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={nb550} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>New Balance 550</p>
                 </div>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={adidasUltra} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>adidas Ultra Bounce</p>
                 </div>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={ASICS} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>ASICS® Gel-1130</p>
                 </div>
-                <div>
+                <div style={{ width: '40%' }}>
                     <img src={converseRun} className='home-featured-img' alt='adidas' />
                     <p className='home-featured-item'>Converse Run Star Hike</p>
                 </div>

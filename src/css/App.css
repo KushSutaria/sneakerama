@@ -222,7 +222,6 @@ body {
 
 .home-promo-div {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   margin-block: 30px;
   text-align: center;
@@ -331,5 +330,45 @@ body {
     color: white;
     padding: 15px 20px;
   }
+
+  .home-promo-div {
+    flex-wrap: wrap;
+  }
+
+  .home-banner-img {
+    width: auto;
+    height: 80vh;
+    object-fit: cover;
+    transform: translate(-25%, 0%);
+  }
+
+  .home-banner-centered-text {
+    /* position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    font-size: 30px;
+    font-weight: 800;
+    width: 80%;
+  }
+
+  .home-banner2-centered-text {
+    width: 80%;
+  }
+
+  .home-brand-div {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .home-brand-img {
+    width: 40%;
+  }
+
+  .home-featured-div {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
 
 }

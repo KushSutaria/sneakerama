@@ -4,7 +4,7 @@ import { authService } from '../../services/authService';
 import '../../css/App.css';
 import { useEffect, useState } from 'react';
 import Cart from './Cart';
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Header() {
     const navigate = useNavigate();
@@ -42,8 +42,8 @@ function Header() {
         const user = await authService.getCurrentUser();
         //send cart and wishlist details to the database
         console.log(user);
-      //  const response = await authService.pushCartAndWishlistToDatabase(user)
-     //   console.log(response);
+        //  const response = await authService.pushCartAndWishlistToDatabase(user)
+        //   console.log(response);
 
         setIsLoggedIn(false);
         authService.logout();
@@ -59,10 +59,10 @@ function Header() {
     };
 
     const navigateWishlist = () => {
-        if(isLoggedIn){
+        if (isLoggedIn) {
             navigate('/wishlist');
         }
-        else{
+        else {
             toast.error("Please login to view your wishlist");
         }
     }
@@ -82,15 +82,18 @@ function Header() {
                         <div className="menu-dropdown-content">
                             <div className='header-mobile-menu'>
                                 <p className='header-mobile-menu-item'>NEW ARRIVALS</p>
-                                <p className='header-mobile-menu-item'onClick={() => {
+                                <p className='header-mobile-menu-item' onClick={() => {
                                     navigate('/orders')
                                     closeMenu();
-                                    }}>MEN'S</p>
-                                <p className='header-mobile-menu-item' onClick={()=>{
-                                    navigate('/catalog')
+                                }}>MEN'S</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/catalog', { state: { 'role': 'women' } })
                                     closeMenu();
-                                    }}>WOMEN'S</p>
-                                <p className='header-mobile-menu-item'>KIDS'</p>
+                                }}>WOMEN'S</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/catalog', { state: { 'role': 'boys' } })
+                                    closeMenu();
+                                }}>KIDS'</p>
                                 <p className='header-mobile-menu-item' onClick={() => {
                                     navigate('/orders')
                                     closeMenu();
@@ -117,14 +120,14 @@ function Header() {
                 </div>
                 <p className='header-logo' onClick={() => navigate('/')}>SNEAKERAMA</p>
                 <div className='header-menu'>
-                <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>NEW ARRIVALS</p>
-                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>MEN'S</p>
-                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>WOMEN'S</p>
-                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>KIDS'</p>
+                    <p className={location.pathname === "/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={() => navigate('/catalog')}>NEW ARRIVALS</p>
+                    <p className={location.pathname === "/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={() => navigate('/catalog')}>MEN'S</p>
+                    <p className={location.pathname === "/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={() => navigate('/catalog', { state: { 'role': 'women' } })}>WOMEN'S</p>
+                    <p className={location.pathname === "/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={() => navigate('/catalog', { state: { 'role': 'boys' } })}>KIDS'</p>
                     <p className={location.pathname === "/orders" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/orders')}>ORDERS</p>
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     {
-                        user && user.isSeller && 
+                        user && user.isSeller &&
                         <p className={location.pathname === "/inventory" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/inventory')}>INVENTORY</p>
 
                     }
@@ -172,7 +175,7 @@ function Header() {
                     :
                     null
             }
-    <ToastContainer position='top-right' autoClose={3000} />
+            <ToastContainer position='top-right' autoClose={3000} />
         </div>
     );
 }
