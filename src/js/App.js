@@ -84,7 +84,8 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/catalog/:id' element={<IndividualProduct />} />
         <Route path="/eventregistration/:id" element={<EventRegistration />} />
-        <Route path="/postevent" element={<PostEvent />} />
+        <Route path="/postevent" element={<PostEvent />} />                
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
 
         {isSeller && isVerified ? (
           <>
